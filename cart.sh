@@ -4,6 +4,6 @@ source ./common.sh
 app_name=cart
 
 CHECK_ROOT
-nodejs_setup
 app_setup
+nodejs_setup
 system_setup
