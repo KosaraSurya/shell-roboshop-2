@@ -61,7 +61,7 @@ app_setup(){
     curl -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip
     VALIDATE $? "donwloading $app_name"
 
-    rm rf /app/*
+    rm -rf /app/*
     VALIDATE $? "removing data from app dir"
 
     cd app/
