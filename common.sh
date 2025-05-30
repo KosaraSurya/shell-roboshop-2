@@ -48,9 +48,13 @@ nodejs_setup(){
 app_setup(){
     id roboshop
     VALIDATE $? "checking user"
-
-    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-    VALIDATE $? "creating user"
+    if [ $? -ne 0 ]
+    then
+        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+        VALIDATE $? "creating user"
+    else
+        echo -e "$G user already created $N"
+    fi
 
     mkdir -p /app
     VALIDATE $? "creating directory"
