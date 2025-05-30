@@ -1,6 +1,6 @@
 #?bin/bash
 
-cource ./common.sh
+source ./common.sh
 app_name=mysql
 
 CHECK_ROOT
