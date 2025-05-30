@@ -64,14 +64,14 @@ app_setup(){
     rm -rf /app/*
     VALIDATE $? "removing data from app dir"
 
-    cd app/
+    cd /app
 
     unzip /tmp/$app_name.zip
     VALIDATE $? "un-zipping the $app_name"
 }
 
 system_setup(){
-    cp $SCRIPT_DIR/$app_name.service /etc/systemd/system/$app_name
+    cp $SCRIPT_DIR/$app_name.service /etc/systemd/system/$app_name.service
     VALIDATE $? "copying $app_name service"
 
     systemctl daemon-reload
