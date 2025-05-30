@@ -8,11 +8,11 @@ CHECK_ROOT
 echo -e "$Y enter rabbitmq password"
 read -s Rabbit_MQ_Password
 
-cp $SCRIPT_DIR/rabbit.repo /etc/yum.repos.d/rabbitmq.repo
-VALIDATE $? "copying rabbit-repo"
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
+VALIDATE $? "Adding rabbitmq repo"
 
-dnf install rabbitmq-server -y
-VALIDATE $? "installing rabbitMQ"
+dnf install rabbitmq-server -y &>>$LOG_FILE
+VALIDATE $? "Installing rabbitmq server"
 
 systemctl enable rabbitmq-server
 VALIDATE $? "enabling rabbitserver"
