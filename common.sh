@@ -78,8 +78,8 @@ system_setup(){
     VALIDATE $? "copying $app_name service"
 
     systemctl daemon-reload
-    systemctl enable catalogue 
-    systemctl start catalogue
+    systemctl enable $app_name 
+    systemctl start $app_name
     VALIDATE $? "Starting the $app_name"
 }
 
