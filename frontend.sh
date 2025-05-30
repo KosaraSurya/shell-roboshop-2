@@ -20,7 +20,7 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 VALIDATE $? "unzipping servie"
 
-cp nginx.conf /etc/nginx/nginx.conf
+cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
 VALIDATE $? "copying nginx conf into /etc/nginx/nginx.conf"
 
 systemctl restart nginx 
