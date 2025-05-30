@@ -47,7 +47,6 @@ nodejs_setup(){
 
 app_setup(){
     id roboshop
-    VALIDATE $? "checking user"
     if [ $? -ne 0 ]
     then
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
