@@ -3,11 +3,13 @@
 source ./common.sh
 app_name="shipping"
 
+
+CHECK_ROOT
 echo -e "$Y enter password"
 read -s mysql_Password
-CHECK_ROOT
-maven_setup
+
 app_setup
+maven_setup
 system_setup
 
 dnf install mysql -y 
