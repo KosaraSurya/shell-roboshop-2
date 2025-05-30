@@ -8,7 +8,7 @@ app_setup
 nodejs_setup
 system_setup
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y
 VALIDATE $? "installing mongodb client"
 
