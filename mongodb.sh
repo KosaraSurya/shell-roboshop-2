@@ -10,7 +10,7 @@ CHECK_ROOT
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "copying repo"
 
-dnf install mongo-org -y
+dnf install mongodb-org -y
 VALIDATE $? "installing mongodb"
 
 systemctl enable mongod
