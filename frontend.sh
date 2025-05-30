@@ -1,7 +1,7 @@
 #!/bin/bash
 
-app_name=frontend
 source ./common.sh
+app_name=frontend
 
 CHECK_ROOT
 nginx_setup
