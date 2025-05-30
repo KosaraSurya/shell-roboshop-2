@@ -1,10 +1,10 @@
 #!bin/bash
 
 source ./common.sh
-app_name:shipping
+app_name="shipping"
 
 echo -e "$Y enter password"
-red -s mysql_Password
+read -s mysql_Password
 CHECK_ROOT
 maven_setup
 app_setup
