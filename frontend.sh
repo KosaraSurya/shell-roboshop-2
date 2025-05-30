@@ -24,4 +24,4 @@ cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
 VALIDATE $? "copying nginx conf into /etc/nginx/nginx.conf"
 
 systemctl restart nginx
-validate $? "Re-starting nginx"
+VALIDATE $? "Re-starting nginx"
