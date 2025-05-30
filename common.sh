@@ -78,7 +78,11 @@ system_setup(){
     VALIDATE $? "copying $app_name service"
 
     systemctl daemon-reload
-    systemctl enable $app_name 
+    VALIDATE $? "daemon-reload $app_name"
+
+    systemctl enable $app_name
+    VALIDATE $? "enable $app_name"
+
     systemctl start $app_name
     VALIDATE $? "Starting the $app_name"
 }
@@ -97,4 +101,15 @@ nginx_setup(){
     systemctl enable nginx 
     systemctl start nginx
     VALIDATE $? "starting nginx"
+}
+
+maven_setup(){
+    dnf install maven -y
+    VALIDATE $? "installing maven"
+
+    mvn clean package
+    VALIDATE $? "cleaning package"
+
+    mv target/shipping-1.0.jar shipping.jar
+    VALIDATE $? "moving targetFile"
 }
