@@ -13,7 +13,7 @@ system_setup
 dnf install mysql -y 
 VALIDATE $? "installing mysql"
 
-mysql -h mysql.daws84s.site -u root -p$mysql_Password -e 'use cities'
+mysql -h mysql.devsecopstrainee.site -u root -p$mysql_Password -e 'use cities'
 if [$? -ne 0]
 then
     mysql -h mysql.devsecopstrainee.site -uroot -$mysql_Password < /app/db/schema.sql
