@@ -4,7 +4,7 @@ source ./common.sh
 app_name=catalogue
 
 CHECK_ROOT
-app-setup
+app_setup
 nodejs_setup
 system_setup
 
