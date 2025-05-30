@@ -45,7 +45,7 @@ nodejs_setup(){
     VALIDATE $? "installing dependencies"
 }
 
-app-setup(){
+app_setup(){
     id roboshop
     VALIDATE $? "checking user"
 
