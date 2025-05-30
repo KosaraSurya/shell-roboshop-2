@@ -1,24 +1,27 @@
-#!/bin/bash
+#!bin/bash
 
 AMI_ID="ami-09c813fb71547fc4f"
-SG_ID="sg-01bc7ebe005fb1cb2" # replace with your SG ID
+SG_ID="sg-0e357cdf3695bf2f9"
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "frontend")
-ZONE_ID="Z032558618100M4EJX8X4" # replace with your ZONE ID
-DOMAIN_NAME="daws84s.site" # replace with your domain
+ZONE_ID="Z0748101MT6SJ25GGSYP"
+DOMAIN_Name="devsecopstrainee.site"
 
-#for instance in ${INSTANCES[@]}
-for instance in $@
+#for INSTANCES in ${INSTANCES[@]}  #it will take from the declared INSTANCES array
+for instance in $@ #dynamically at the time of running the script we have to pass the arguments to install
 do
-    INSTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t3.micro --security-group-ids sg-01bc7ebe005fb1cb2 --tag-specifications "ResourceType=instance,Tags=[{Key=Name, Value=$instance}]" --query "Instances[0].InstanceId" --output text)
+    #creating instance through cli
+    echo "Script stated at $(date)"
+    INSTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro --security-group-ids sg-0e357cdf3695bf2f9 --tag-specifications "ResourceType=instance,Tags=[{Key=Name, Value=$instance}]" --query "Instances[0].InstanceId" --output text)
     if [ $instance != "frontend" ]
     then
         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[0].Instances[0].PrivateIpAddress" --output text)
-        RECORD_NAME="$instance.$DOMAIN_NAME"
+        RECORD_NAME=$instance.$DOMAIN_Name
+        
     else
         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
-        RECORD_NAME="$DOMAIN_NAME"
+        RECORD_NAME=$DOMAIN_Name
     fi
-    echo "$instance IP address: $IP"
+    echo "$instance ip address is $IP"
 
     aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONE_ID \
@@ -37,4 +40,5 @@ do
         }
         }]
     }'
+
 done
