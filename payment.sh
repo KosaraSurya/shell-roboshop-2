@@ -1,7 +1,7 @@
 #!bin/bash
 
 source ./common.sh
-app_name=payment
+app_name="payment"
 
 CHECK_ROOT
 app_name
