@@ -4,7 +4,7 @@ source ./common.sh
 app_name="payment"
 
 CHECK_ROOT
-app_name
+app_setup
 
 
 
