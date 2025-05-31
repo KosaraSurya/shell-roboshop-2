@@ -3,7 +3,7 @@
 source ./common.sh
 app_name=mongodb
 
-makdir -p app
+mkdir -p app
 
 CHECK_ROOT
 
